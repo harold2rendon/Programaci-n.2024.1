@@ -11,7 +11,7 @@ public class MascotaTest {
     @Test
     public void datosCompletos() {
         LOG.info("inicio de prueba con datos completos");
-        Mascota mascota = new Mascota("lukas", "perro" , "labrador", (byte) 3, "macho", "negro", (byte) 45 );
+        Mascota mascota = new Mascota("lukas", "perro" , "labrador", (byte) 3, "macho", "negro", (Double) 45.0 );
         assertEquals("lukas", mascota.nombre());
         assertEquals("perro", mascota.especie());
         assertEquals("labrador", mascota.raza());
@@ -25,7 +25,7 @@ public class MascotaTest {
     @Test
     public void datosErrados(){
         LOG.info("Inicio de la prueba datos errados");
-        Mascota mascota1 = new Mascota("lukas", "perro" , "labrador", (byte) 3, "macho", "negro", (byte) 45 );
+        Mascota mascota1 = new Mascota("lukas", "perro" , "labrador", (byte) 3, "macho", "negro", (Double) 45.0 );
         assertEquals("lukas", mascota1.nombre());
         assertEquals("perro", mascota1.especie());
         assertEquals("12", mascota1.raza());
@@ -40,7 +40,7 @@ public class MascotaTest {
     public void datosIncompletos(){
         LOG.info("inicio de prueba con datos incompletos");
         
-        Mascota mascota2 = new Mascota("piro", "perro" , "abisino", (byte) 1, "hembra", "blanco", (byte) 7);
+        Mascota mascota2 = new Mascota("piro", "perro" , "abisino", (byte) 1, "hembra", "blanco", (Double) 7.0);
         assertEquals("piro", mascota2.nombre());
         assertEquals(" ", mascota2.especie());
         assertEquals(" ", mascota2.raza());
@@ -54,7 +54,7 @@ public class MascotaTest {
     public void datosNegativos(){
         LOG.info("inicio de prueba con datos negativos");
         
-        Mascota mascota2 = new Mascota("piro", "perro" , "abisino", (byte) 1, "hembra", "blanco", (byte) 7);
+        Mascota mascota2 = new Mascota("piro", "perro" , "abisino", (byte) 1, "hembra", "blanco", (Double) 7.0);
         assertEquals(-1, mascota2.edad());
         assertEquals(-7, mascota2.peso());
         LOG.info("fin de la prueba con datos negativos");
@@ -62,8 +62,8 @@ public class MascotaTest {
     @Test
     public void mascotasIguales() {
         LOG.info("Comprobando que dos mascotas iguales se consideren iguales");
-        Mascota mascota1 = new Mascota("Bobby", "Perro", "Labrador", (byte) 5, "macho", "Negro", (byte) 30);
-        Mascota mascota2 = new Mascota("Bobby", "bovino", "Labrador", (byte) 5, "macho", "Negro", (byte) 30);
+        Mascota mascota1 = new Mascota("Bobby", "Perro", "Labrador", (byte) 5, "macho", "Negro", (Double) 30.5);
+        Mascota mascota2 = new Mascota("Bobby", "bovino", "Labrador", (byte) 5, "macho", "Negro", (Double) 30.5);
         assertEquals(mascota1, mascota2);
         LOG.info("Fin de comprobacion");
     }
