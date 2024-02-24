@@ -1,6 +1,9 @@
 package co.edu.uniquindio.poo;
 
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 import java.util.logging.Logger;
 import org.junit.jupiter.api.Test;
 
@@ -25,10 +28,10 @@ public class MascotaTest {
     @Test
     public void datosErrados(){
         LOG.info("Inicio de la prueba datos errados");
-        Mascota mascota1 = new Mascota("lukas", "perro" , "labrador", (byte) 3, "macho", "negro", (Double) 45.0 );
+        Mascota mascota1 = new Mascota("lukas", "perro" , "12", (byte) 3, "macho", "negro", (Double) 45.0 );
         assertEquals("lukas", mascota1.nombre());
         assertEquals("perro", mascota1.especie());
-        assertEquals("12", mascota1.raza());
+        assertEquals("labrador", mascota1.raza());
         assertEquals(3, mascota1.edad());
         assertEquals("macho", mascota1.género());
         assertEquals("negro", mascota1.color());
@@ -40,10 +43,10 @@ public class MascotaTest {
     public void datosIncompletos(){
         LOG.info("inicio de prueba con datos incompletos");
         
-        Mascota mascota2 = new Mascota("piro", "perro" , "abisino", (byte) 1, "hembra", "blanco", (Double) 7.0);
+        Mascota mascota2 = new Mascota("piro", " perro" , "abisino", (byte) 1, "hembra", "blanco", (Double) 7.0);
         assertEquals("piro", mascota2.nombre());
         assertEquals(" ", mascota2.especie());
-        assertEquals(" ", mascota2.raza());
+        assertEquals("abisino ", mascota2.raza());
         assertEquals(1, mascota2.edad());
         assertEquals("hembra", mascota2.género());
         assertEquals("blanco", mascota2.color());
@@ -60,11 +63,11 @@ public class MascotaTest {
         LOG.info("fin de la prueba con datos negativos");
     }
     @Test
-    public void mascotasIguales() {
+    public void mascotasDistintas() {
         LOG.info("Comprobando que dos mascotas iguales se consideren iguales");
         Mascota mascota1 = new Mascota("Bobby", "Perro", "Labrador", (byte) 5, "macho", "Negro", (Double) 30.5);
-        Mascota mascota2 = new Mascota("Bobby", "bovino", "Labrador", (byte) 5, "macho", "Negro", (Double) 30.5);
-        assertEquals(mascota1, mascota2);
+        Mascota mascota2 = new Mascota("Bobby", "vaca", "equino", (byte) 5, "macho", "Negro", (Double) 30.5);
+        assertNotEquals(mascota1, mascota2);
         LOG.info("Fin de comprobacion");
     }
 
