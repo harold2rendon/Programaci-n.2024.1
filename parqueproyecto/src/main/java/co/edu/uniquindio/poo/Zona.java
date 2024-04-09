@@ -1,6 +1,6 @@
 package co.edu.uniquindio.poo;
 
-public class Zona {
+public abstract class Zona {
     private String nombre;
     private Material material;
     private FiguraGeometrica figuraGeometrica;
@@ -22,5 +22,6 @@ public class Zona {
     public FiguraGeometrica getFiguraGeometrica() {
         return figuraGeometrica;
     }
-
+    public abstract double calcularValor();
+    
 }

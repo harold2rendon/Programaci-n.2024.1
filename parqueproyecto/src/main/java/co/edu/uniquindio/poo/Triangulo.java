@@ -6,6 +6,9 @@ public class Triangulo extends FiguraGeometrica {
 
     
     public Triangulo(double base, double altura) {
+        if (base <= 0 || altura <= 0) {
+            throw new IllegalArgumentException("La base y la altura deben ser valores positivos");
+        }
         this.base = base;
         this.altura = altura;
     }
