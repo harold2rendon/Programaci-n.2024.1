@@ -12,7 +12,7 @@ public class VerificarStockTest {
             public void testVerificarStock(){
                 LOG.info("inicio de prueba para verificar el stock");
                 Cliente juan = new Cliente("Juan", "Gomez", "87654321", "Via alterna", "12357654");
-                Producto ibuprofeno = new Medicamento("4", "ibuprofeno", "Para el dolor", 3000, 50, "La real", 400);
+                Producto ibuprofeno = new Medicamento("3", "ibuprofeno", "Para el dolor", 3000, 50, "La real", 400);
                 Producto aspirina = new Medicamento("5", "aspirina", "Para la fiebre", 4000, 200, "Farmacenter", 500);
                 
                 Pedido pedidoJuan  = new Pedido(LocalDate.now(), 2);
