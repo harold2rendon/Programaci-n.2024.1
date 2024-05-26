@@ -80,7 +80,7 @@ public class ParqueaderoTest {
     @Test
     public void fechaEntradaNula(){
         Registro registro = new Registro(null, null, null);
-        assertEquals(null, registro.getFechaEntrada());
+        assertEquals(2022-05-24, registro.getFechaEntrada());
     }
 
     /*
