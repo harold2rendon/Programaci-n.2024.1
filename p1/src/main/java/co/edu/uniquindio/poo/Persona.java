@@ -13,7 +13,7 @@ public class Persona {
     public Persona(String nombres, String apellidos, int edad, String telefono, String identificacion, String correo) {
         assert nombres != null && !nombres.isBlank() : "Los nombres no pueden ser nulos ni vacíos";
         assert apellidos != null && !apellidos.isBlank() : "Los apellidos no pueden ser nulos ni vacíos";
-        assert edad > 16 : "La edad debe ser mayor a dieciseis";
+        assert edad >= 16 : "La edad debe ser mayor a dieciseis";
         assert telefono != null && !telefono.isBlank() : "El teléfono no puede ser nulo ni vacío";
         assert identificacion != null && !identificacion.isBlank() : "La identificación no puede ser nulo ni vacío";
         assert correo != null && !correo.isBlank() : "El correo no puede ser nulo ni vacío";
