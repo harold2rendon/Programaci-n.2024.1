@@ -24,4 +24,9 @@ public class Moto extends Vehiculo {
     public TipoMoto getTipoMoto() {
         return tipoMoto;
     }
+
+    @Override
+    public String toString() {
+        return "Moto [velocidadMaxima=" + velocidadMaxima + ", tipoMoto=" + tipoMoto + "]";
+    }
 }

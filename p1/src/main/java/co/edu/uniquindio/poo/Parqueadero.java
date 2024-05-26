@@ -162,4 +162,10 @@ public class Parqueadero {
         }
         return dineroRecaudado;
     }
+
+    @Override
+    public String toString() {
+        return "Parqueadero [nombre=" + nombre + ", numeroPuestos=" + numeroPuestos + ", registros=" + registros
+                + ", puestos=" + puestos + ", vehiculos=" + vehiculos + "]";
+    }
 }

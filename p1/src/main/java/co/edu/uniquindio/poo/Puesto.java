@@ -38,4 +38,10 @@ public class Puesto {
     public void setVehiculo(Vehiculo vehiculo) {
         this.vehiculo = vehiculo;
     }
+
+    @Override
+    public String toString() {
+        return "Puesto [posicionI=" + posicionI + ", posicionJ=" + posicionJ + ", estado=" + estado + ", vehiculo="
+                + vehiculo + "]";
+    }
 }

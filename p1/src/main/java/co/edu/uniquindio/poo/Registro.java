@@ -49,4 +49,10 @@ public class Registro {
     public void setFechaSalida(LocalDateTime fechaSalida) {
         this.fechaSalida = fechaSalida;
     }
+
+    @Override
+    public String toString() {
+        return "Registro [fechaEntrada=" + fechaEntrada + ", fechaSalida=" + fechaSalida + ", vehiculo=" + vehiculo
+                + "]";
+    }
 }

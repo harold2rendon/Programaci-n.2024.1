@@ -50,6 +50,12 @@ public class Persona {
     public String getCorreo() {
         return correo;
     }
+
+    @Override
+    public String toString() {
+        return "Persona [nombres=" + nombres + ", apellidos=" + apellidos + ", edad=" + edad + ", telefono=" + telefono
+                + ", identificacion=" + identificacion + ", correo=" + correo + "]";
+    }
 }
   
 
