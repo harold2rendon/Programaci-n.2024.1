@@ -38,4 +38,6 @@ public abstract class Vehiculo {
     public void setTarifa(double tarifa) {
         this.tarifa = tarifa;
     }
+    // Metodo para obtener la tarifa y poder calcular el total a pagar
+    public abstract double getTarifaPorHora();
 }

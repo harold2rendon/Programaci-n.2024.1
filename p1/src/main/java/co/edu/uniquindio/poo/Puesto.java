@@ -1,47 +1,37 @@
 package co.edu.uniquindio.poo;
 
-// Clase puesto se usara en el parqueadero para ubicar vehiculos
+import java.time.LocalDateTime;
+
 public class Puesto {
-    private final int posicionI;
-    private final int posicionJ;
-    private Estado estado;
     private Vehiculo vehiculo;
+    private LocalDateTime fechaEntrada;
+    private boolean disponible;
 
-    // Constructor de la clase Puesto
-    public Puesto(int posicionI, int posicionJ, Estado estado) {
-        this.posicionI = posicionI;
-        this.posicionJ = posicionJ;
-        this.estado = estado;
+    public Puesto() {
+        this.disponible = true;
     }
-
-    // Métodos get y set de la clase Puesto
-    public int getPosicionI() {
-        return posicionI;
+    // Metodo para saber si se ocupa un puesto
+    public void ocupado(Vehiculo vehiculo, LocalDateTime fechaEntrada) {
+        this.vehiculo = vehiculo;
+        this.fechaEntrada = fechaEntrada;
+        this.disponible = false;
     }
-
-    public int getPosicionJ() {
-        return posicionJ;
-    }
-
-    public Estado getEstado() {
-        return estado;
+    // Metodo para saber si no se ocupa un puesto
+    public void desocupar() {
+        this.vehiculo = null;
+        this.fechaEntrada = null;
+        this.disponible = true;
     }
 
     public Vehiculo getVehiculo() {
         return vehiculo;
     }
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
+    public LocalDateTime getFechaEntrada() {
+        return fechaEntrada;
     }
 
-    public void setVehiculo(Vehiculo vehiculo) {
-        this.vehiculo = vehiculo;
-    }
-
-    @Override
-    public String toString() {
-        return "Puesto [posicionI=" + posicionI + ", posicionJ=" + posicionJ + ", estado=" + estado + ", vehiculo="
-                + vehiculo + "]";
+    public boolean estaDisponible() {
+        return disponible;
     }
 }

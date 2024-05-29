@@ -4,6 +4,9 @@ package co.edu.uniquindio.poo;
 public class Moto extends Vehiculo {
     private final double velocidadMaxima;
     private final TipoMoto tipoMoto;
+    private static final double TARIFA_POR_HORA_CLASICA = 1.0; 
+    private static final double TARIFA_POR_HORA_HIBRIDA = 1.5; 
+
 
     // Constructor de la clase
     public Moto(String placa, String modelo, Propietario propietario, double velocidadMaxima, TipoMoto tipoMoto) {
@@ -26,7 +29,7 @@ public class Moto extends Vehiculo {
     }
 
     @Override
-    public String toString() {
-        return "Moto [velocidadMaxima=" + velocidadMaxima + ", tipoMoto=" + tipoMoto + "]";
+    public double getTarifaPorHora() {
+        return (tipoMoto == TipoMoto.MOTO_CLASICA) ? TARIFA_POR_HORA_CLASICA : TARIFA_POR_HORA_HIBRIDA;
     }
 }

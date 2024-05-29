@@ -1,13 +1,15 @@
 package co.edu.uniquindio.poo;
 
 import javax.swing.*;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
-import java.util.Collection;
+import java.time.format.DateTimeFormatter;
 
 public class Main {
     private static Parqueadero parqueadero;
+
     public static void main(String[] args) {
         // Inicializar el parqueadero
         String nombreParqueadero = JOptionPane.showInputDialog("Ingrese el nombre del parqueadero:");
@@ -15,9 +17,9 @@ public class Main {
         int numeroPuestos = Integer.parseInt(numeroPuestosStr);
         parqueadero = new Parqueadero(nombreParqueadero, numeroPuestos);
 
-        // Menu para que el usuario interactue
+        // Menú para que el usuario interactúe
         while (true) {
-            String opcion =  JOptionPane.showInputDialog("Menú:\n" +
+            String opcion = JOptionPane.showInputDialog("Menú:\n" +
                     "1. Agregar vehículo\n" +
                     "2. Eliminar vehículo\n" +
                     "3. Verificar estado de un puesto\n" +
@@ -25,13 +27,13 @@ public class Main {
                     "5. Generar reporte mensual\n" +
                     "6. Obtener información del propietario por puesto\n" +
                     "7. Salir");
-        
+
             switch (opcion) {
                 case "1":
-                    agregarVehiculo();
+                    agregarVehiculoPorPuesto();
                     break;
                 case "2":
-                    eliminarVehiculo();
+                    eliminarVehiculoPorPuesto();
                     break;
                 case "3":
                     verificarPuesto();
@@ -54,11 +56,10 @@ public class Main {
         }
     }
 
-    // Utilizacion de los metodos para el correcto funcionamiento del menu
-
-    private static void agregarVehiculo() {
+    private static void agregarVehiculoPorPuesto() {
         String[] vehiculoOptions = {"Carro", "Moto"};
-        int tipoVehiculo = JOptionPane.showOptionDialog(null, "Seleccione el tipo de vehículo", "Agregar vehículo",JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, vehiculoOptions, vehiculoOptions[0]);
+        int tipoVehiculo = JOptionPane.showOptionDialog(null, "Seleccione el tipo de vehículo", "Agregar vehículo",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, vehiculoOptions, vehiculoOptions[0]);
 
         String placa = JOptionPane.showInputDialog("Ingrese la placa del vehículo:");
         String modelo = JOptionPane.showInputDialog("Ingrese el modelo del vehículo:");
@@ -93,11 +94,13 @@ public class Main {
         }
     }
 
-    private static void eliminarVehiculo() {
+    private static void eliminarVehiculoPorPuesto() {
         int posicionI = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la posición I del puesto:"));
         int posicionJ = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la posición J del puesto:"));
-        LocalDateTime fechaSalida = LocalDateTime.now();
-        parqueadero.eliminarVehiculoPorPuesto(posicionI, posicionJ, fechaSalida);
+        String fechaSalidaStr = JOptionPane.showInputDialog("Ingrese la fecha y hora de salida (YYYY-MM-DDTHH:MM):");
+        LocalDateTime fechaSalida = LocalDateTime.parse(fechaSalidaStr, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+        double costo = parqueadero.eliminarVehiculoPorPuesto(posicionI, posicionJ, fechaSalida);
+        JOptionPane.showMessageDialog(null, "El costo total por el tiempo estacionado es: $" + costo);
     }
 
     private static void verificarPuesto() {
@@ -110,11 +113,8 @@ public class Main {
     private static void generarReporteDiario() {
         String fechaString = JOptionPane.showInputDialog("Ingrese la fecha del reporte (YYYY-MM-DD):");
         LocalDate fecha = LocalDate.parse(fechaString);
-        Collection<Double> reporte = parqueadero.generarReporteDiario(fecha);
-        JOptionPane.showMessageDialog(null, "Dinero recaudado el " + fecha + ":\n" +
-                "Carros: $" + reporte.toArray()[0] + "\n" +
-                "Motos Clásicas: $" + reporte.toArray()[1] + "\n" +
-                "Motos Híbridas: $" + reporte.toArray()[2]);
+        double reporte = parqueadero.generarReporteDiario(fecha);
+        JOptionPane.showMessageDialog(null, "Dinero recaudado el " + fecha + ": $" + reporte);
     }
 
     private static void generarReporteMensual() {
@@ -140,3 +140,5 @@ public class Main {
         }
     }
 }
+
+

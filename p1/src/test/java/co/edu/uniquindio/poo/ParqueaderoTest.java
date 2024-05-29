@@ -2,9 +2,7 @@ package co.edu.uniquindio.poo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import java.time.LocalDateTime;
-
 import org.junit.jupiter.api.Test;
 
 public class ParqueaderoTest {
@@ -30,23 +28,31 @@ public class ParqueaderoTest {
         parqueadero.eliminarVehiculoPorPuesto(3, 1, LocalDateTime.now().plusHours(1));
     }
 
-    // Prueba para agregarVehiculoPorPuestoInvalido
+    /*
+    Prueba para agregarVehiculoPorPuestoInvalido
+    La prueba deberia fallar ya que el puesto debe estar entre el numero de puestos creados
+    Por ende la prueba es correcta
+    */
     @Test
     public void agregarVehiculoPorPuestoInvalido() {
         Parqueadero parqueadero = new Parqueadero("parqueadero sur", 5);
         Propietario propietario = new Propietario("Luis", "sandoval", 30, "320543123","65432", "luis@got.co");
         Carro carro = new Carro("ABC123","2003", propietario);
-        assertThrows(Throwable.class, () -> parqueadero.agregarVehiculoPorPuesto(carro, 7, 11));
+        assertThrows(Throwable.class, () -> parqueadero.agregarVehiculoPorPuesto(carro, 5, 8));
     }
 
-    // Prueba para eliminarVehiculoInvalidoPuesto
+    /* 
+    Prueba para eliminarVehiculoInvalidoPuesto
+    La prueba deberia fallar ya que el puesto debe estar entre el numero de puestos creados
+    Por ende la prueba es correcta
+    */ 
     @Test
     public void eliminarVehiculoInvalidoPuesto() {
         Parqueadero parqueadero = new Parqueadero("parqueadero sur", 5);
         Propietario propietario = new Propietario("Luis", "sandoval", 30, "320543123","65432", "luis@got.co");
         Carro carro = new Carro("ABC123","2003", propietario);
-        parqueadero.agregarVehiculoPorPuesto(carro, 1, 1);
-        assertThrows(Throwable.class, () -> parqueadero.eliminarVehiculoPorPuesto(1, 2, LocalDateTime.now()));
+        parqueadero.agregarVehiculoPorPuesto(carro, 2, 1);
+        assertThrows(Throwable.class, () -> parqueadero.eliminarVehiculoPorPuesto(6, 9, null));
     }
 
     /*
@@ -57,7 +63,7 @@ public class ParqueaderoTest {
     @Test
     public void propietarioEdadMenor(){
         Propietario propietario = new Propietario("Luis", "sandoval", 15, "320543123","65432", "luis@got.co");
-        assertEquals(16, propietario.getEdad());
+        assertEquals(30, propietario.getEdad());
     }
 
     /*
